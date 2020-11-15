@@ -1,0 +1,57 @@
+/*
+
+ You are given a string. You have to print “Wonder” if the string is wonderful and -1 if it is not.
+ A wonderful string is a string,which is made up of exactly 3 different characters.
+
+Input Description:
+==================
+You are given a string
+
+Output Description:
+===================
+Print “Wonder” if it is wonderful and -1 if it is not
+
+Sample Input :
+==============
+aabbcc
+Sample Output :
+===============
+Wonder
+
+*/
+import java.util.Scanner;
+import java.util.ArrayList;
+public class Main{
+    public static void main(String args[]){
+        Scanner sa=new Scanner(System.in);
+        String str=sa.nextLine();
+        String s[]=str.split("");
+        int found=0;
+        int index=0;
+        ArrayList ar=new ArrayList();
+        ar.add(s[0]);
+        for(int i=0;i<s.length;i++){
+            if(!ar.get(index).equals(s[i])){
+                for(int j=0;j<ar.size();j++){
+                    if(s[i]==ar.get(j)){
+                        found++;    
+                    }
+                }
+                if(found>0){
+                    found=0;
+                    continue;
+                }
+                else{
+                    ar.add(s[i]);
+                    index++;
+                }
+            }
+        }
+        if(ar.size()==3){
+            System.out.print("Wonder");
+        }
+        else{
+            System.out.print("-1");
+        }
+    }
+}
